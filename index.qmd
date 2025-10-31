@@ -1,5 +1,6 @@
 ---
 title: "dashboards"
+format: dashboard
 ---
 
 This is a Quarto website.
