@@ -3,10 +3,28 @@ title: "dashboards"
 format: dashboard
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Row 1
 
 ```{r}
-1 + 1
+library(tidyverse)
+library(plotly)
+```
+
+```{r}
+ggplot(starwars, aes(mass, height)) +
+  geom_point()
+```
+
+## Row 2
+
+```{r}
+ggplot(starwars, aes(name, height)) +
+  geom_bar(stat="identity")
+```
+
+```{r}
+starwars <- starwars %>% 
+  select(name, height, mass, gender, homeworld, species)
+
+knitr::kable(starwars)
 ```
