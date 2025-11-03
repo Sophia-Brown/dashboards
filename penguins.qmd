@@ -1,0 +1,40 @@
+---
+title: "Palmer Penguins Dashboard"
+author: "Sophia Brown"
+format: dashboard
+---
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(plotly)
+library(janitor)
+
+penguins <- read_csv("data/penguins_lter.csv")
+
+penguins <- penguins %>%
+  clean_names()
+
+```
+
+make a dashboard w 2 rows. row 1 contains 2 graphs showing any penguin data you'd like. row 2 contains a table (use knitr::kable and select if you'd like to narrow down the columns). then customize the dashboard by adding colors, labels, interactivity
+
+## Row 1
+
+```{r}
+ggplot(penguins, aes(y= culmen_length_mm, x= island)) +
+  geom_point()
+```
+
+```{r}
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point()
+```
+
+## Row 2
+
+```{r}
+penguins <- penguins %>%
+  select(-comments)
+
+knitr::kable(penguins)
+```
